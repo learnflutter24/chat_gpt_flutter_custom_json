@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 
-import 'model/MessageModel.dart';
-import 'model/ResponseModel.dart';
+import '../model/MessageModel.dart';
+import '../model/ResponseModel.dart';
+import '../widgets/card.dart';
 
 class ChatBotPage extends StatefulWidget {
   const ChatBotPage({super.key});
@@ -15,24 +16,23 @@ class ChatBotPage extends StatefulWidget {
 }
 
 class _ChatBotPageState extends State<ChatBotPage> {
-  static const kDefault = 15.0;
-  final messageController = TextEditingController();
+  static const kValue = 15.0;
+  final textController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
   static const apiKey = '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';
   final messages = [MessageModel(true, 'Hi')];
-  bool isAiTyping = false;
+  bool isBotTyping = false;
 
   @override
   void dispose() {
-    messageController.dispose();
+    textController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('ChatGPT in Flutter'),
+          title: const Text('ChatGPT with Custom JSON'),
           leading: const Padding(
             padding: EdgeInsets.only(left: 10),
             child: CircleAvatar(
@@ -53,10 +53,11 @@ class _ChatBotPageState extends State<ChatBotPage> {
                         isBot ? Alignment.centerLeft : Alignment.centerRight;
                     return Align(
                       alignment: alignment,
-                      child: userCard(
+                      child: card(
                         index: index,
                         alignment: alignment,
                         isBot: isBot,
+                        message: messages[index].message.trim(),
                       ),
                     );
                   },
@@ -67,20 +68,20 @@ class _ChatBotPageState extends State<ChatBotPage> {
                 child: Container(
                   width: double.maxFinite,
                   padding: const EdgeInsets.symmetric(
-                    horizontal: kDefault / 2,
-                    vertical: kDefault / 1.5,
+                    horizontal: kValue / 2,
+                    vertical: kValue / 1.5,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(kDefault),
-                      topLeft: Radius.circular(kDefault),
+                      topRight: Radius.circular(kValue),
+                      topLeft: Radius.circular(kValue),
                     ),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withOpacity(.23),
-                        offset: const Offset(kDefault / 1.2, .5),
-                        blurRadius: kDefault,
+                        offset: const Offset(kValue / 1.2, .5),
+                        blurRadius: kValue,
                       ),
                     ],
                   ),
@@ -90,15 +91,15 @@ class _ChatBotPageState extends State<ChatBotPage> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.grey.withOpacity(.12),
-                            borderRadius: BorderRadius.circular(kDefault * 3.33),
+                            borderRadius: BorderRadius.circular(kValue * 3.33),
                           ),
                           child: TextFormField(
-                            controller: messageController,
+                            controller: textController,
                             autofocus: true,
                             decoration: const InputDecoration(
                               hintText: 'Enter question here',
                               border: InputBorder.none,
-                              contentPadding: EdgeInsets.all(kDefault)
+                              contentPadding: EdgeInsets.all(kValue),
                             ),
                             textInputAction: TextInputAction.send,
                             validator: (value) =>
@@ -106,8 +107,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
                           ),
                         ),
                       ),
-// suffixIcon:
-                      isAiTyping
+                      isBotTyping
                           ? Transform.scale(
                               scale: 0.8,
                               child: const CircularProgressIndicator(
@@ -116,21 +116,19 @@ class _ChatBotPageState extends State<ChatBotPage> {
                               ),
                             )
                           : GestureDetector(
-                              onTap: () {
-                                sendMessage();
-                              },
+                              onTap: askQuestion,
                               child: Container(
-                                margin: const EdgeInsets.all(kDefault / 2),
-                                width: kDefault * 3,
-                                height: kDefault * 3,
+                                margin: const EdgeInsets.all(kValue / 2),
+                                width: kValue * 3,
+                                height: kValue * 3,
                                 decoration: BoxDecoration(
                                   color: const Color(0xff0360a6),
                                   borderRadius:
-                                      BorderRadius.circular(kDefault * 3.33),
+                                      BorderRadius.circular(kValue * 3.33),
                                 ),
                                 child: const Icon(
                                   Icons.send,
-                                  size: kDefault * 1.6,
+                                  size: kValue * 1.6,
                                   color: Color(0xffffffff),
                                 ),
                               ),
@@ -144,94 +142,12 @@ class _ChatBotPageState extends State<ChatBotPage> {
         ),
       );
 
-  Padding userCard({
-    required int index,
-    required Alignment alignment,
-    required bool isBot,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kDefault,
-        vertical: kDefault,
-      ),
-      child: Stack(
-        children: [
-          Align(
-            alignment: alignment,
-            child: isBot
-                ? const CircleAvatar(
-                    backgroundImage: AssetImage('chatGptImage.png'),
-                    radius: 18,
-                  )
-                : const CircleAvatar(
-                    child: Icon(Icons.person),
-                  ),
-          ),
-          Align(
-            alignment: alignment,
-            child: Container(
-              // height: ,
-              margin: isBot
-                  ? const EdgeInsets.only(
-                      right: kDefault / 2,
-                      left: kDefault * 3.6,
-                    )
-                  : const EdgeInsets.only(
-                      left: kDefault / 2,
-                      right: kDefault * 3.6,
-                    ),
-              padding: isBot
-                  ? const EdgeInsets.symmetric(
-                      horizontal: kDefault * 1.2,
-                      vertical: kDefault / 1.2,
-                    )
-                  : const EdgeInsets.symmetric(
-                      horizontal: kDefault * 1.2,
-                      vertical: kDefault / 1.2,
-                    ),
-              decoration: BoxDecoration(
-                color:
-                    isBot ? const Color(0xffffffff) : const Color(0xff0360a6),
-                borderRadius: isBot
-                    ? const BorderRadius.only(
-                        bottomLeft: Radius.circular(kDefault * 3.33),
-                        bottomRight: Radius.circular(kDefault * 3.33),
-                        topRight: Radius.circular(kDefault * 3.33),
-                      )
-                    : const BorderRadius.only(
-                        bottomRight: Radius.circular(kDefault * 3.33),
-                        bottomLeft: Radius.circular(kDefault * 3.33),
-                        topLeft: Radius.circular(kDefault * 3.33),
-                      ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.3),
-                    offset: const Offset(kDefault / 5, kDefault / 5),
-                    blurRadius: kDefault * 0.5,
-                  ),
-                ],
-              ),
-              child: Text(
-                messages[index].message.trim(),
-                style: TextStyle(
-                  color:
-                      isBot ? const Color(0xff0360a6) : const Color(0xffffffff),
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void sendMessage() async {
+  void askQuestion() async {
     if (formKey.currentState!.validate()) {
       messages.add(
-        MessageModel(false, messageController.text),
+        MessageModel(false, textController.text),
       );
-      setState(() => isAiTyping = true);
+      setState(() => isBotTyping = true);
 
       final response = await http.post(
         Uri.parse('https://api.openai.com/v1/chat/completions'),
@@ -245,13 +161,13 @@ class _ChatBotPageState extends State<ChatBotPage> {
             "messages": [
               {
                 "role": "user",
-                "content": messageController.text,
+                "content": textController.text,
               },
             ],
           },
         ),
       );
-      messageController.clear();
+      textController.clear();
       debugPrint('response :$response');
       debugPrint('response.body :${response.body}');
       debugPrint('response.statusCode :${response.statusCode}');
@@ -266,7 +182,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
               responseModel.choices[0].message!.content.toString(),
             ),
           );
-          isAiTyping = false;
+          isBotTyping = false;
         });
       }
     }
