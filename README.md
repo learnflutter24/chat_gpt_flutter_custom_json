@@ -7,7 +7,7 @@
 <img src="output.png" alt="Output" width="300"/>
 
 ### Flutter Packages Used
-[http](https://pub.dev/packages/http)
+1. [http](https://pub.dev/packages/http)
 
 ### Example Request and Response in JSON
 [https://platform.openai.com/docs/api-reference/chat/create](https://platform.openai.com/docs/api-reference/chat/create)<br/>
