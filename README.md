@@ -8,7 +8,7 @@
 
 ### Flutter Packages Used
 
-1. [http](https://pub.dev/packages/http) for post request
+1. [http: ^1.2.1](https://pub.dev/packages/http) for post request
 
 ### Example Request and Response in JSON
 
