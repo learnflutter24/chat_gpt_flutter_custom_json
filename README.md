@@ -2,9 +2,9 @@
 
 ### Output Gif
 
-![Chat GPT Custom JSON Output Gif.gif](Chat%20GPT%20Custom%20JSON%20Output%20Gif.gif)
-&nbsp;
 <img src="output.png" alt="Output" width="300"/>
+&nbsp;
+![Chat GPT Custom JSON Output Gif.gif](Chat%20GPT%20Custom%20JSON%20Output%20Gif.gif)
 
 ### Flutter Packages Used
 
