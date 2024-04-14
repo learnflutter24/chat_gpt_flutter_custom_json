@@ -7,10 +7,7 @@
 
 ## Example Request and Response in JSON
 ![OpenAI_ExampleRequest_Response_in_JSON.png](OpenAI_ExampleRequest_Response_in_JSON.png)
-![alt text](OpenAI_ExampleRequest_Response_in_JSON.png "Title Text"){width=100 height=100px}
-
-![alt text](OpenAI_ExampleRequest_Response_in_JSON.png "Title Text"){width=75%}
-
+<img src="OpenAI_ExampleRequest_Response_in_JSON.png" alt="Output" width="300"/>
 A new Flutter project.
 
 ## Getting Started
