@@ -7,9 +7,11 @@
 <img src="output.png" alt="Output" width="300"/>
 
 ### Flutter Packages Used
-1. [http](https://pub.dev/packages/http)
+
+1. [http](https://pub.dev/packages/http) for post request
 
 ### Example Request and Response in JSON
+
 [https://platform.openai.com/docs/api-reference/chat/create](https://platform.openai.com/docs/api-reference/chat/create)<br/>
 <img src="OpenAI_ExampleRequest_Response_in_JSON.png" alt="Output" width="300"/>
 
