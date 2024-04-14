@@ -6,7 +6,7 @@
 ![output.png](output.png)
 
 ## Example Request and Response in JSON
-![OpenAI_ExampleRequest_Response_in_JSON.png](OpenAI_ExampleRequest_Response_in_JSON.png) {width=300px}
+![OpenAI_ExampleRequest_Response_in_JSON.png](OpenAI_ExampleRequest_Response_in_JSON.png) {width=30%}
 
 A new Flutter project.
 
