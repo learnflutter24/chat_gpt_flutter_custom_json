@@ -2,6 +2,8 @@
 
 ## Output Gif
 ![Chat GPT Custom JSON Output Gif.gif](Chat%20GPT%20Custom%20JSON%20Output%20Gif.gif)
+&nbsp;
+![output.png](output.png)
 
 ## Example Request and Response in JSON
 ![OpenAI_ExampleRequest_Response_in_JSON.png](OpenAI_ExampleRequest_Response_in_JSON.png)
