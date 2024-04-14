@@ -6,7 +6,9 @@
 ![output.png](output.png)
 
 ## Example Request and Response in JSON
-<img src="OpenAI_ExampleRequest_Response_in_JSON.png" alt="Output" width="500"/>\A new Flutter project.
+<img src="OpenAI_ExampleRequest_Response_in_JSON.png" alt="Output" width="500"/>
+
+A new Flutter project.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
