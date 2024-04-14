@@ -7,7 +7,7 @@
 <img src="output.png" alt="Output" width="300"/>
 
 ## Example Request and Response in JSON
-[https://platform.openai.com/docs/api-reference/chat/create](https://platform.openai.com/docs/api-reference/chat/create)
+[https://platform.openai.com/docs/api-reference/chat/create](https://platform.openai.com/docs/api-reference/chat/create)<br/>
 <img src="OpenAI_ExampleRequest_Response_in_JSON.png" alt="Output" width="300"/>
 
 A new Flutter project.
