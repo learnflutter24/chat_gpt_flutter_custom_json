@@ -32,11 +32,11 @@ class _ChatBotPageState extends State<ChatBotPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('ChatGPT with Custom JSON'),
+          title: const Text('ChatGPT Custom JSON'),
           leading: const Padding(
             padding: EdgeInsets.only(left: 10),
             child: CircleAvatar(
-              backgroundImage: AssetImage('chatGptImage.png'),
+              backgroundImage: AssetImage('assets/chatGpt.png'),
             ),
           ),
         ),

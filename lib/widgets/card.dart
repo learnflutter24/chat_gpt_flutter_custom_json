@@ -19,7 +19,7 @@ Padding card({
             alignment: alignment,
             child: isBot
                 ? const CircleAvatar(
-                    backgroundImage: AssetImage('chatGptImage.png'),
+                    backgroundImage: AssetImage('assets/chatGpt.png'),
                     radius: 18,
                   )
                 : const CircleAvatar(

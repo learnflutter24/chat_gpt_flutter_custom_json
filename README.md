@@ -1,5 +1,11 @@
 # chat_gpt_flutter_custom_json
 
+## Output Gif
+![Chat GPT Custom JSON Output Gif.gif](Chat%20GPT%20Custom%20JSON%20Output%20Gif.gif)
+
+## Example Request and Response in JSON
+![OpenAI_ExampleRequest_Response_in_JSON.png](OpenAI_ExampleRequest_Response_in_JSON.png)
+
 A new Flutter project.
 
 ## Getting Started
