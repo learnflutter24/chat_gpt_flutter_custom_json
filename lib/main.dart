@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'ChatGPT SDK Flutter',
         debugShowCheckedModeBanner: false,
+        title: 'ChatGPT SDK Flutter',
         theme: theme,
         home: const ChatBotPage(),
       );
