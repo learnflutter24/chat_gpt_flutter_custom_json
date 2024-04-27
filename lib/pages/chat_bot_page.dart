@@ -19,7 +19,7 @@ class _ChatBotPageState extends State<ChatBotPage> {
   static const kValue = 15.0;
   final textController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-  static const apiKey = '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';
+  static const apiKey = 'YOUR-API-KEY';
   final messages = [MessageModel(true, 'Hi')];
   bool isBotTyping = false;
 
